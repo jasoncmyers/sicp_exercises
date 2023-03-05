@@ -6,7 +6,7 @@
     (start-prime-test n (runtime)))
 (define (start-prime-test n start-time)
     (if (prime? n)
-	    (report-prime (- (runtime) start-time))))
+        (report-prime (- (runtime) start-time))))
 (define (report-prime elapsed-time)
     (display " *** ")
     (display elapsed-time))
@@ -17,11 +17,11 @@
 (define (prime? n)
     (= n (smallest-divisor n)))
 (define (even? n)
-	(= (remainder n 2) 0))
+    (= (remainder n 2) 0))
 (define (square x) 
-	(* x x))
+    (* x x))
 (define (divides? a b)
-	(= (remainder b a) 0))
+    (= (remainder b a) 0))
 (define (find-divisor n test-divisor)
   (cond ((> (square test-divisor) n)
          n)
@@ -32,20 +32,20 @@
                (+ test-divisor 1)))))
 (define (smallest-divisor n)
   (find-divisor n 2))
-	
+
 ; Begin solution here
 ; I went with an end range instead of number to find because I couldn't think of a way to do the latter without rewriting the given functions to return a boolean result as well as print the time.
 (define (search-for-primes start-number end-number)
-	; Inspired by problem 1.23, modified to avoid checking for any even numbers
-	(cond
-		((> start-number end-number)
-			(display "\nComplete"))
-		((even? start-number) 
-			(search-for-primes (+ start-number 1) end-number))
-		(else 
-			(timed-prime-test start-number)
-			(search-for-primes (+ start-number 2) end-number))))
-			
+    ; Inspired by problem 1.23, modified to avoid checking for any even numbers
+    (cond
+        ((> start-number end-number)
+            (display "\nComplete"))
+        ((even? start-number)
+            (search-for-primes (+ start-number 1) end-number))
+        (else
+            (timed-prime-test start-number)
+            (search-for-primes (+ start-number 2) end-number))))
+
 #| Results - The first three primes in each range could be found with:
 (search-for-primes 1000 1020)
 Output: 

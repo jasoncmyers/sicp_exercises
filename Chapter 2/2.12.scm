@@ -21,3 +21,14 @@
 ; (mcons 5.0 15.0)
 (make-center-percent 25 10)
 ; (mcons 22.5 27.5)
+
+; And to retrieve the percent
+(define (percent i)
+    (let ((c (center i)))
+      (* 100 (/ (- c (lower-bound i)) c))))
+
+; Tests:
+(percent (make-center-percent 10 50))
+; 50.0
+(percent (make-center-percent 25 10))
+; 10.0
